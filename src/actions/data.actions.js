@@ -6,7 +6,7 @@ import {
   RESULTS_ERROR
 } from '../types';
 
-export function createTest() {
+export function getData() {
   return async (dispatch, getState, api) => {
     function onSuccess(res) {
       const isEmpty = !res.results.length;

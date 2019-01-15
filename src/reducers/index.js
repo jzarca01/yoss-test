@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import testReducer from './test.reducer';
+import dataReducer from './data.reducer';
+import gameReducer from './game.reducer';
 
 const reducers = combineReducers({
-  test: testReducer
+  data: dataReducer,
+  game: gameReducer
 });
 
 export default reducers;

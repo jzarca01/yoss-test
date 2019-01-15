@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 export default class TestComponent extends Component {
   componentDidMount() {
-    const { createTest } = this.props;
-    createTest();
+    const { getData } = this.props;
+    getData();
     console.log(this.props);
   }
   render() {
@@ -25,7 +25,7 @@ export default class TestComponent extends Component {
 
 const style = {
   container: {
-    flex:1,
+    flex: 1,
     flexDirection: 'row'
   }
 };

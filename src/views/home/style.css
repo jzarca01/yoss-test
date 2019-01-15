@@ -1,0 +1,10 @@
+.Home {
+  width: 100%;
+  padding: 5%;
+}
+
+.Home .players {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

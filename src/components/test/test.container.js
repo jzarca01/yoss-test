@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import TestComponent from './test.component';
-import { createTest } from '../../actions/test.actions';
+import { getData } from '../../actions/data.actions';
 
 function mapStateToProps(state) {
   return {
-    films: state.test.films,
-    actors: state.test.actors
+    films: state.data.films,
+    actors: state.data.actors
   };
 }
 
 const mapDispatchToProps = {
-  createTest
+  getData
 };
 
 export default connect(

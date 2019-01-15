@@ -3,4 +3,6 @@ export {
   RESULTS_EMPTY,
   RESULTS_LOADED,
   RESULTS_ERROR
-} from './test.types';
+} from './data.types';
+
+export { START_GAME } from './game.types';
