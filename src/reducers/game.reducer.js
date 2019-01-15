@@ -1,28 +1,25 @@
 import {
-  LOAD_RESULTS,
+  START_GAME,
   RESULTS_EMPTY,
   RESULTS_LOADED,
   RESULTS_ERROR
 } from '../types';
 
 const initialState = {
-  isLoading: false,
-  isLoaded: false,
-  isEmpty: false,
-  isError: false,
-  films: [],
-  actors: []
+  nbPlayers: null,
+  playerTurn: null,
+  isPlaying: false,
+  players: []
 };
 
-function testReducer(state = initialState, action) {
+const dataReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_RESULTS:
+    case START_GAME:
       return {
         ...state,
-        isLoading: true,
-        isLoaded: false,
-        isError: false,
-        isEmpty: false
+        isPlaying: true,
+        nbPlayers: action.payload.nbPlayers,
+        ...action.payload
       };
     case RESULTS_EMPTY:
       return {
@@ -51,6 +48,6 @@ function testReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};
 
-export default testReducer;
+export default dataReducer;
