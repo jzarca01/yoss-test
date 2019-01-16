@@ -4,8 +4,8 @@
 
 - [x] Config initiale
 - [x] Récupération des données de TMDB
-- [] Composants graphiques
-- [] Gestion des états de jeu
+- [x] Composants graphiques
+- [x] Gestion des états de jeu
 
 ## Enoncé
 
