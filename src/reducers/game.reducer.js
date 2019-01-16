@@ -14,6 +14,7 @@ const gameReducer = (state = initialState, action) => {
     case START_GAME:
       return {
         ...state,
+        ...initialState,
         ...action.payload,
         isPlaying: true,
         currentPlayer: action.payload.players[0]

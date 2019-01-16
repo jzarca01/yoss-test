@@ -4,6 +4,7 @@ import Header from '../../components/header/header.component';
 import Question from '../../components/question/question.container';
 
 import './style.css';
+import ScoresComponent from '../../components/scores/scores.component';
 
 export default class PlayComponent extends Component {
   componentDidMount() {
@@ -17,7 +18,8 @@ export default class PlayComponent extends Component {
       isPlaying,
       currentQuestion,
       currentPlayer,
-      rounds
+      rounds,
+      players
     } = this.props;
     const { actor, movie } = currentQuestion;
     return (
@@ -32,7 +34,7 @@ export default class PlayComponent extends Component {
             <Question movie={movie} actor={actor} />
           </React.Fragment>
         )}
-        {!isPlaying && <h2>Game over</h2>}
+        {!isPlaying && rounds > 0 && <ScoresComponent players={players} />}
       </div>
     );
   }

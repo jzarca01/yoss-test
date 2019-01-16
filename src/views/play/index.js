@@ -7,7 +7,8 @@ const mapStateToProps = state => ({
   nbPlayers: state.game.nbPlayers,
   currentPlayer: state.game.currentPlayer,
   currentQuestion: state.game.currentQuestion,
-  rounds: state.game.rounds
+  rounds: state.game.rounds,
+  players: state.game.players
 });
 
 const mapDispatchToProps = dispatch => ({
