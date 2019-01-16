@@ -2,7 +2,6 @@ import { START_GAME, CORRECT_ANSWER, WRONG_ANSWER } from '../types';
 
 const initialState = {
   nbPlayers: null,
-  playerTurn: null,
   isPlaying: false,
   players: [],
   rounds: 0,
