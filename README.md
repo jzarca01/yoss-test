@@ -9,6 +9,7 @@
 - [] Affichage des scores
 - [] Timer
 - [] Equilibrage des réponses
+- [] Tests
 
 ## Enoncé
 
