@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 
 import Header from '../../components/header/header.component';
-import './style.css';
-import Question from '../../components/question/question.component';
+import Question from '../../components/question/question.container';
 
-const QuestionExample = {
-  actor: {
-    name: 'Will Smith'
-  },
-  movie: {
-    posterUrl: 'https://source.unsplash.com/random/300x400'
-  }
-};
+import './style.css';
+import ScoresComponent from '../../components/scores/scores.component';
 
 export default class PlayComponent extends Component {
   componentDidMount() {
@@ -21,14 +14,25 @@ export default class PlayComponent extends Component {
   }
 
   render() {
-    const { location, isPlaying } = this.props;
-
+    const {
+      isPlaying,
+      currentQuestion,
+      currentPlayer,
+      rounds,
+      players
+    } = this.props;
+    const { actor, movie } = currentQuestion;
     return (
       <div className="Play">
-        <Header isPlaying={isPlaying} />
-        <h1>Play view</h1>
-        {JSON.stringify(location)}
-        <Question movie={QuestionExample.movie} actor={QuestionExample.actor} />
+        <Header />
+        <h1>Round {rounds}</h1>
+        {!!isPlaying && (
+          <React.Fragment>
+            <h2>{currentPlayer.name} turn</h2>
+            <Question movie={movie} actor={actor} />
+          </React.Fragment>
+        )}
+        {!isPlaying && rounds > 0 && <ScoresComponent players={players} />}
       </div>
     );
   }

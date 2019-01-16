@@ -1,48 +1,31 @@
-import {
-  START_GAME,
-  RESULTS_EMPTY,
-  RESULTS_LOADED,
-  RESULTS_ERROR
-} from '../types';
+import { START_GAME, CORRECT_ANSWER, WRONG_ANSWER } from '../types';
 
 const initialState = {
   nbPlayers: null,
-  playerTurn: null,
   isPlaying: false,
-  players: []
+  players: [],
+  rounds: 0,
+  currentQuestion: {}
 };
 
-const dataReducer = (state = initialState, action) => {
+const gameReducer = (state = initialState, action) => {
   switch (action.type) {
     case START_GAME:
       return {
         ...state,
+        ...initialState,
+        ...action.payload,
         isPlaying: true,
-        nbPlayers: action.payload.nbPlayers,
+        currentPlayer: action.payload.players[0]
+      };
+    case CORRECT_ANSWER:
+      return {
+        ...state,
         ...action.payload
       };
-    case RESULTS_EMPTY:
+    case WRONG_ANSWER:
       return {
         ...state,
-        isEmpty: true,
-        isLoading: false,
-        isLoaded: true
-      };
-    case RESULTS_LOADED:
-      return {
-        ...state,
-        isLoading: false,
-        isEmpty: false,
-        isLoaded: true,
-        ...action.payload
-      };
-    case RESULTS_ERROR:
-      return {
-        ...state,
-        isLoaded: true,
-        isEmpty: false,
-        isLoading: false,
-        isError: true,
         ...action.payload
       };
     default:
@@ -50,4 +33,4 @@ const dataReducer = (state = initialState, action) => {
   }
 };
 
-export default dataReducer;
+export default gameReducer;
