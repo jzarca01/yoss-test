@@ -5,4 +5,4 @@ export {
   RESULTS_ERROR
 } from './data.types';
 
-export { START_GAME } from './game.types';
+export { START_GAME, CORRECT_ANSWER, WRONG_ANSWER } from './game.types';

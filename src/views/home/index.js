@@ -1,42 +1,17 @@
-import React from 'react';
-import { Sprite, Balloon } from 'nes-react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import HomeComponent from './home.component';
+import { getData } from '../../actions/data.actions';
 
-import './style.css';
+const mapStateToProps = state => ({
+  isLoaded: state.data.isLoaded,
+  isError: state.data.isError
+});
 
-const Home = () => (
-  <div className="Home">
-    <h1>Welcome</h1>
-    <div className="players">
-      <div style={{ display: 'flex' }}>
-        <Sprite sprite="octocat" style={{ alignSelf: 'flex-end' }} />
-        <Balloon style={{ margin: '2rem', maxWidth: '400px' }} fromLeft>
-          <Link
-            to={{
-              pathname: '/play',
-              state: { nbPlayers: 1 }
-            }}
-          >
-            1-Player Game
-          </Link>
-        </Balloon>
-      </div>
-      <div style={{ display: 'flex' }}>
-        <Balloon style={{ margin: '2rem', maxWidth: '400px' }} fromRight>
-          <Link
-            disabled
-            to={{
-              pathname: '/play',
-              state: { nbPlayers: 2 }
-            }}
-          >
-            2-Player Game
-          </Link>
-        </Balloon>
-        <Sprite sprite="octocat" style={{ alignSelf: 'flex-end' }} />
-      </div>
-    </div>
-  </div>
-);
+const mapDispatchToProps = dispatch => ({
+  getData: () => dispatch(getData())
+});
 
-export default Home;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeComponent);

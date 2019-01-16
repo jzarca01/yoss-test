@@ -5,13 +5,10 @@ import Poster from '../poster/poster.component';
 
 import './style.css';
 
-class Question extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class QuestionComponent extends React.Component {
   onClickButton(movieId, actorId, answer) {
-    console.log(answer);
+    const { answerQuestion } = this.props;
+    answerQuestion(movieId, actorId, answer);
   }
 
   render() {
@@ -19,7 +16,12 @@ class Question extends React.Component {
 
     return (
       <div className="Question">
-        <Poster posterUrl={movie.posterUrl} actorName={actor.name} />;
+        {movie && actor && (
+          <Poster
+            posterUrl={`http://image.tmdb.org/t/p/w185${movie.poster_path}`}
+            actorName={actor.name}
+          />
+        )}
         <div className="answers">
           <Button
             success
@@ -38,5 +40,3 @@ class Question extends React.Component {
     );
   }
 }
-
-export default Question;
