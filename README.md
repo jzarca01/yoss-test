@@ -6,6 +6,9 @@
 - [x] Récupération des données de TMDB
 - [x] Composants graphiques
 - [x] Gestion des états de jeu
+- [] Affichage des scores
+- [] Timer
+- [] Equilibrage des réponses
 
 ## Enoncé
 
