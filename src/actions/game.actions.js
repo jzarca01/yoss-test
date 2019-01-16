@@ -11,7 +11,7 @@ const getRandomQuestion = (movies, actors) => {
 
 const createPlayer = index => ({
   index: index,
-  name: `Player ${index+1}`,
+  name: `Player ${index + 1}`,
   score: 0,
   isStillPlaying: true
 });
@@ -61,15 +61,12 @@ export const answerQuestion = (movieId, actorId, answer) => (
   getState
 ) => {
   function onCorrectAnswer() {
+    const players = game.players.filter(player => player.isStillPlaying);
     dispatch({
       type: CORRECT_ANSWER,
       payload: {
         players: incrementScore(game.players, game.currentPlayer.index),
-        currentPlayer:
-          game.players[
-            game.rounds %
-              game.players.filter(player => player.isStillPlaying).length
-          ],
+        currentPlayer: players[game.rounds % players.length],
         currentQuestion: getRandomQuestion(data.films, data.actors),
         rounds: game.rounds + 1
       }
@@ -80,18 +77,15 @@ export const answerQuestion = (movieId, actorId, answer) => (
       game.players,
       game.currentPlayer.index
     );
-    const isStillPlaying =
-      newStateofPlayers.filter(player => player.isStillPlaying).length > 0;
+    const players = newStateofPlayers.filter(player => player.isStillPlaying);
+    const isStillPlaying = players.length;
     dispatch({
       type: WRONG_ANSWER,
       payload: {
         players: newStateofPlayers,
         isPlaying: isStillPlaying,
         currentPlayer: isStillPlaying
-          ? newStateofPlayers[
-              game.rounds %
-                newStateofPlayers.filter(player => player.isStillPlaying).length
-            ]
+          ? players[game.rounds % isStillPlaying]
           : game.currentPlayer,
         rounds: isStillPlaying ? game.rounds + 1 : game.rounds,
         currentQuestion: isStillPlaying
