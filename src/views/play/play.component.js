@@ -24,13 +24,11 @@ export default class PlayComponent extends Component {
     const { actor, movie } = currentQuestion;
     return (
       <div className="Play">
-        <Header isPlaying={isPlaying} />
-        <h1>Play view</h1>
-        {isPlaying && (
+        <Header />
+        <h1>Round {rounds}</h1>
+        {!!isPlaying && (
           <React.Fragment>
-            <h2>
-              Round {rounds} : {currentPlayer.name} turn
-            </h2>
+            <h2>{currentPlayer.name} turn</h2>
             <Question movie={movie} actor={actor} />
           </React.Fragment>
         )}
